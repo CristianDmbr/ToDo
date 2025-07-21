@@ -1,1 +1,1 @@
-# ToDo
+# Simple To Do using Django
