@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Edit Task</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Edit Task</title>
+  <!-- Bootstrap CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
-    <h1>Edit Task: {{ task.task }}</h1>
+  <div class="container my-5">
+    <h1 class="mb-4">Edit Task: {{ task.task }}</h1>
 
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Save Changes</button>
+    <form method="post" novalidate>
+      {% csrf_token %}
+      <div class="mb-3">
+        {{ form.as_p|safe }}
+      </div>
+      <button type="submit" class="btn btn-primary">Save Changes</button>
+      <a href="{% url 'Main page URL' %}" class="btn btn-secondary ms-2">Back to task list</a>
     </form>
+  </div>
 
-    <a href="{% url 'Main page URL' %}">Back to task list</a>
+  <!-- Bootstrap JS Bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
