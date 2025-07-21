@@ -21,6 +21,8 @@
                 <th>Due Date</th>
                 <th>Status</th>
                 <th>Priority</th>
+                <th></th><!-- delete -->
+                <th></th><!-- edit -->
             </tr>
         </thead>
         <tbody>
@@ -33,26 +35,26 @@
                 <td>{{ task.get_progressStatus_display }}</td>
                 <td>{{ task.get_importanceRating_display }}</td>
                 <td>
-                    <form action="{% url 'delete_task' task.id %}" method="post" style="display:inline;">
+                    <form action="{% url 'Delete page url' task.id %}" method="post" style="display:inline;">
                         {% csrf_token %}
                         <button type="submit">Delete</button>
                     </form>
                 </td>
                 <td>
-                    <a href="{% url 'makeChange' task.id %}">Edit</a>
+                    <a href="{% url 'Edit page URL' task.id %}">Edit</a>
                 </td>
             </tr>
             {% empty %}
-            <tr><td colspan="6">No tasks available.</td></tr>
+            <tr><td colspan="8">No tasks available.</td></tr>
             {% endfor %}
         </tbody>
     </table>
-    <h2>
-        <form method="post">
-            {% csrf_token %}
-            {{ form.as_p }}
-            <button type="submit">Add Task</button>
-        </form>
-    </h2>
+
+    <h2>Add a New Task</h2>
+    <form method="post" action="{% url 'Main page URL' %}">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Add Task</button>
+    </form>
 </body>
 </html>
