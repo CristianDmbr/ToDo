@@ -27,3 +27,17 @@ def delete_task(request, task_id):
     task = get_object_or_404(Tasks, id=task_id)
     task.delete()
     return redirect('Task creation')
+
+def makeChange(request, task_id):
+    task = get_object_or_404(Tasks, id = task_id)
+
+    if request.method == 'POST':
+        form = TaskCreationForm(request.POST, instance = task)
+        if form.is_valid():
+            form.save()
+            return redirect('create_task')
+    else:
+        form = TaskCreationForm(instance = task)
+    
+    context = {'form': form, 'task': task}
+    return render(request, 'editTask.html', context)

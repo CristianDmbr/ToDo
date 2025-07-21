@@ -38,6 +38,9 @@
                         <button type="submit">Delete</button>
                     </form>
                 </td>
+                <td>
+                    <a href="{% url 'makeChange' task.id %}">Edit</a>
+                </td>
             </tr>
             {% empty %}
             <tr><td colspan="6">No tasks available.</td></tr>
